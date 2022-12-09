@@ -3,7 +3,7 @@ let startButton = document.querySelector(".start");
 startButton.addEventListener("click", changeToStop);
 
 function changeToStop() {
-  startButton.innerHTML = "STOP";
+  startButton.innerHTML = "stop";
   startButton.removeEventListener("click", changeToStop);
   startButton.addEventListener("click", changeToStart);
 }
