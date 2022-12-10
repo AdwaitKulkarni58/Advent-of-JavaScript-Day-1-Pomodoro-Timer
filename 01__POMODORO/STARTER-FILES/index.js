@@ -1,38 +1,48 @@
-let startButton = document.querySelector(".start");
-let minutes = document.querySelector("#minutesInput").value;
-let seconds = document.querySelector("#secondsInput").value;
-let circleRing = document.querySelector(".ring");
+let timer;
+let startButton;
+let circleRing;
+let userMinutes;
+let userSeconds;
 
-startButton.addEventListener("click", countdown);
+function getUserInput() {
+  timer = document.querySelector(".timer");
+  startButton = document.querySelector(".start");
+  circleRing = document.querySelector(".ring");
+  userMinutes = sessionStorage.getItem("userMinutes");
+  userMinutes = prompt("Enter minutes.");
+  sessionStorage.setItem("userMinutes", userMinutes);
+  userSeconds = sessionStorage.getItem("userSeconds");
+  userSeconds = prompt("Enter seconds.");
+  sessionStorage.setItem("userSeconds", userSeconds);
+  document.querySelector("#minutesInput").value = userMinutes;
+  document.querySelector("#secondsInput").value = userSeconds;
+  startButton.addEventListener("click", countdown);
+}
 
 function countdown() {
-  startButton.innerHTML = "reset";
+  timer.removeChild(startButton);
   countDownClock();
 }
 
 function countDownClock() {
-  if (minutes == 0 && seconds == 0) {
+  if (userMinutes == 0 && userSeconds == 0) {
     document.querySelector("#secondsInput").value = 00;
     document.querySelector("#minutesInput").value = 00;
     circleRing.classList.add("ending");
     return;
   }
-  if (seconds <= 0) {
-    minutes--;
+  if (userSeconds <= 0) {
+    userMinutes--;
     countDownMinutes();
-    seconds = 60;
-    document.querySelector("#secondsInput").value = seconds;
+    userSeconds = 60;
+    document.querySelector("#secondsInput").value = userSeconds;
   }
-  seconds--;
+  userSeconds--;
   setTimeout(countDownClock, 1000);
-  document.querySelector("#secondsInput").value = seconds;
+  document.querySelector("#secondsInput").value = userSeconds;
 }
 
 function countDownMinutes() {
   setTimeout(countDownMinutes, 60000);
-  document.querySelector("#minutesInput").value = minutes;
+  document.querySelector("#minutesInput").value = userMinutes;
 }
-
-// function manageButtonClicks() {
-//   startButton.removeEventListener("click", changeToStart());
-// }
