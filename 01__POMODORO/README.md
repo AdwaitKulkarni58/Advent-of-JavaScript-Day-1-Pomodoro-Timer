@@ -15,8 +15,7 @@ You can use as many (or as few) tools, libraries, and frameworks as you'd like. 
 
 1. Open the project's `README.md` file. It has additional information on how the project is structured.
 2. Customize your project / file architecture to your liking.
-3. Happy coding!
-4. Once you're finished, share your work using **#adventofjs**
+3. Once you're finished, share your work using **#adventofjs**
 
 # Taking your Project to the Next Level
 
