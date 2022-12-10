@@ -1,25 +1,26 @@
 let startButton = document.querySelector(".start");
 let minutes = document.querySelector("#minutesInput").value;
 let seconds = document.querySelector("#secondsInput").value;
+let circleRing = document.querySelector(".ring");
 
 startButton.addEventListener("click", countdown);
 
 function countdown() {
   startButton.innerHTML = "stop";
-  countDownSeconds();
-  if (seconds < 0 && minutes >= 0) {
-  }
-  //   if (seconds > 0 && minutes >= 0) {
-  //     setTimeout(countdown, 1000);
-  //   } else {
-  //     setTimeout(breakCountdown, 1000);
-  //   }
+  countDownClock();
+
   //   startButton.innerHTML = "stop";
   //   startButton.removeEventListener("click", changeToStop);
   //   startButton.addEventListener("click", changeToStart);
 }
 
-function countDownSeconds() {
+function countDownClock() {
+  if (minutes == 0 && seconds == 0) {
+    document.querySelector("#secondsInput").value = 00;
+    document.querySelector("#minutesInput").value = 00;
+    circleRing.classList.add("ending");
+    return;
+  }
   if (seconds <= 0) {
     minutes--;
     countDownMinutes();
@@ -27,7 +28,7 @@ function countDownSeconds() {
     document.querySelector("#secondsInput").value = seconds;
   }
   seconds--;
-  setTimeout(countDownSeconds, 1000);
+  setTimeout(countDownClock, 1000);
   document.querySelector("#secondsInput").value = seconds;
 }
 
