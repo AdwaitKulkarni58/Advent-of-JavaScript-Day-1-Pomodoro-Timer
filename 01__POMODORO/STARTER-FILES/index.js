@@ -35,6 +35,7 @@ function countDownClock() {
     document.querySelector("#secondsInput").value = 00;
     document.querySelector("#minutesInput").value = 00;
     circleRing.classList.add("ending");
+    alert("Time over.");
     return;
   }
   if (userSeconds <= 0) {
