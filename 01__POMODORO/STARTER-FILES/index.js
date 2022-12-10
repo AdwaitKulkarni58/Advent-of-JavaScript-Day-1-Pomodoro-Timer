@@ -5,10 +5,9 @@ let seconds = document.querySelector("#secondsInput").value;
 startButton.addEventListener("click", countdown);
 
 function countdown() {
+  startButton.innerHTML = "stop";
   countDownSeconds();
   if (seconds < 0 && minutes >= 0) {
-    minutes--;
-    seconds = 59;
   }
   //   if (seconds > 0 && minutes >= 0) {
   //     setTimeout(countdown, 1000);
@@ -22,12 +21,19 @@ function countdown() {
 
 function countDownSeconds() {
   if (seconds <= 0) {
+    minutes--;
+    countDownMinutes();
     seconds = 60;
     document.querySelector("#secondsInput").value = seconds;
   }
   seconds--;
   setTimeout(countDownSeconds, 1000);
   document.querySelector("#secondsInput").value = seconds;
+}
+
+function countDownMinutes() {
+  setTimeout(countDownMinutes, 60000);
+  document.querySelector("#minutesInput").value = minutes;
 }
 
 // function breakCountdown() {
