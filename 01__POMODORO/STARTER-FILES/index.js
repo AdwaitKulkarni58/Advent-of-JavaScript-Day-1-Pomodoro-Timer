@@ -6,7 +6,7 @@ let circleRing = document.querySelector(".ring");
 startButton.addEventListener("click", countdown);
 
 function countdown() {
-  startButton.innerHTML = "stop";
+  startButton.innerHTML = "reset";
   countDownClock();
 }
 
@@ -32,3 +32,7 @@ function countDownMinutes() {
   setTimeout(countDownMinutes, 60000);
   document.querySelector("#minutesInput").value = minutes;
 }
+
+// function manageButtonClicks() {
+//   startButton.removeEventListener("click", changeToStart());
+// }
